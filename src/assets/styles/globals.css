@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* JARVIS Theme CSS Variables */
+:root {
+  /* Base Colors */
+  --jarvis-background: #0A0E17;
+  --jarvis-surface: #1A1F2E;
+  --jarvis-surface-hover: #242A3D;
+
+  /* Primary - Cyan */
+  --jarvis-primary: #00D4FF;
+  --jarvis-primary-dim: #0099CC;
+  --jarvis-primary-glow: rgba(0, 212, 255, 0.3);
+
+  /* Accent - Orange */
+  --jarvis-accent: #FF6B35;
+  --jarvis-accent-glow: rgba(255, 107, 53, 0.3);
+
+  /* Status Colors */
+  --jarvis-success: #00FF88;
+  --jarvis-warning: #FFB800;
+  --jarvis-error: #FF4757;
+
+  /* Text */
+  --jarvis-text-primary: #E0F7FA;
+  --jarvis-text-secondary: #8892B0;
+  --jarvis-text-muted: #4A5568;
+
+  /* Borders & Grid */
+  --jarvis-border: #1E3A5F;
+  --jarvis-grid: rgba(30, 58, 95, 0.5);
+
+  /* shadcn-vue CSS variables */
+  --background: 222 47% 6%;
+  --foreground: 186 100% 94%;
+
+  --card: 224 33% 14%;
+  --card-foreground: 186 100% 94%;
+
+  --popover: 224 33% 12%;
+  --popover-foreground: 186 100% 94%;
+
+  --primary: 190 100% 50%;
+  --primary-foreground: 222 47% 6%;
+
+  --secondary: 195 100% 40%;
+  --secondary-foreground: 186 100% 94%;
+
+  --muted: 224 33% 20%;
+  --muted-foreground: 215 20% 55%;
+
+  --accent: 18 100% 60%;
+  --accent-foreground: 222 47% 6%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 186 100% 94%;
+
+  --border: 210 50% 25%;
+  --input: 210 50% 25%;
+  --ring: 190 100% 50%;
+
+  --radius: 0.5rem;
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar for JARVIS theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--jarvis-surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--jarvis-border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--jarvis-primary-dim);
+  }
+
+  /* Selection color */
+  ::selection {
+    background: rgba(0, 212, 255, 0.3);
+    color: var(--jarvis-text-primary);
+  }
+}
+
+/* Component Styles */
+@layer components {
+  /* Glow effects */
+  .glow-sm {
+    box-shadow: 0 0 10px var(--jarvis-primary-glow);
+  }
+
+  .glow {
+    box-shadow: 0 0 20px var(--jarvis-primary-glow);
+  }
+
+  .glow-lg {
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.5);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 20px var(--jarvis-accent-glow);
+  }
+
+  /* Text glow */
+  .text-glow {
+    text-shadow: 0 0 10px var(--jarvis-primary-glow);
+  }
+
+  /* Holographic gradient */
+  .holographic {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 212, 255, 0.1) 0%,
+      rgba(0, 153, 204, 0.05) 50%,
+      rgba(0, 212, 255, 0.1) 100%
+    );
+  }
+
+  /* Grid pattern background */
+  .grid-pattern {
+    background-image:
+      linear-gradient(var(--jarvis-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--jarvis-grid) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  /* Scan line effect */
+  .scanlines::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 212, 255, 0.03) 2px,
+      rgba(0, 212, 255, 0.03) 4px
+    );
+    pointer-events: none;
+  }
+
+  /* Border glow animation */
+  .border-glow {
+    position: relative;
+  }
+
+  .border-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(
+      45deg,
+      var(--jarvis-primary),
+      var(--jarvis-primary-dim),
+      var(--jarvis-primary)
+    );
+    background-size: 200% 200%;
+    animation: border-glow-animation 3s ease infinite;
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  @keyframes border-glow-animation {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Frosted glass effect */
+  .frosted {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(26, 31, 46, 0.7);
+  }
+
+  /* Code block styling */
+  .code-block {
+    background: var(--jarvis-surface);
+    border: 1px solid var(--jarvis-border);
+    border-radius: 0.5rem;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+
+  /* Message bubble styles */
+  .message-user {
+    @apply bg-primary/20 border border-primary/30;
+  }
+
+  .message-assistant {
+    @apply bg-muted/50 border border-border;
+  }
+}
+
+/* Utility classes */
+@layer utilities {
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent;
+  }
+
+  /* No scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Custom animations */
+  .animate-in {
+    animation: animate-in 0.2s ease-out;
+  }
+
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* Drag region for custom title bar */
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}

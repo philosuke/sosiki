@@ -1,33 +1,85 @@
 {
-  "name": "org-chart-app",
+  "name": "claudis",
   "version": "1.0.0",
-  "description": "組織図作成アプリケーション",
-  "main": "main.js",
+  "description": "CLAUDIS - Claude Leveraged AI Desktop Interface System",
+  "main": "dist-electron/main/index.js",
+  "type": "module",
   "scripts": {
-    "start": "electron .",
-    "package": "electron-builder"
+    "dev": "vite",
+    "build": "vue-tsc && vite build && electron-builder",
+    "build:unpack": "npm run build -- --dir",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
+    "typecheck": "vue-tsc --noEmit"
   },
   "keywords": [
-    "organization",
-    "chart",
-    "electron"
+    "claudis",
+    "claude",
+    "ai",
+    "assistant",
+    "jarvis",
+    "electron",
+    "vue"
   ],
-  "author": "",
+  "author": "CLAUDIS Development Team",
   "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@vueuse/core": "^11.3.0",
+    "axios": "^1.7.9",
+    "better-sqlite3": "^11.6.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "electron-store": "^10.0.0",
+    "keytar": "^7.9.0",
+    "lucide-vue-next": "^0.462.0",
+    "marked": "^15.0.4",
+    "nanoid": "^5.0.9",
+    "pinia": "^2.2.6",
+    "radix-vue": "^1.9.10",
+    "shiki": "^1.24.2",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
   "devDependencies": {
-    "electron": "^27.0.0",
-    "electron-builder": "^24.6.4"
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.2",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.20",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.5",
+    "vite-plugin-electron": "^0.28.8",
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "vue-tsc": "^2.2.0"
   },
   "build": {
-    "appId": "com.orgchart.app",
-    "productName": "組織図作成アプリ",
+    "appId": "com.claudis.app",
+    "productName": "CLAUDIS",
     "directories": {
-      "output": "dist"
+      "output": "release"
     },
     "files": [
-      "main.js",
-      "src/**/*",
-      "package.json"
-    ]
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "mac": {
+      "icon": "resources/icon.icns",
+      "target": ["dmg", "zip"]
+    },
+    "win": {
+      "icon": "resources/icon.ico",
+      "target": ["nsis", "portable"]
+    },
+    "linux": {
+      "icon": "resources/icon.png",
+      "target": ["AppImage", "deb"]
+    }
   }
 }

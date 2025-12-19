@@ -1,103 +1,80 @@
-# 組織図作成アプリケーション
+# CLAUDIS
 
-Electronベースのデスクトップアプリケーションで、企業や組織の階層構造を視覚的に作成・管理し、HTML形式で出力できます。
+> **CLAUDIS** - Claude Leveraged AI Desktop Interface System
 
-## 特徴
+アイアンマンのJARVIS/FRIDAYにインスパイアされた次世代AIアシスタントインターフェース
 
-- 直感的なUIで社員と組織の情報を簡単に管理
-- 階層構造を持つ組織図の自動生成
-- スタンドアロンHTMLファイルとして出力可能
-- JSON形式でのデータ保存・読み込み
-- サンプルデータ付きですぐに試せる
+## Features
 
-## 必要な環境
+- **チャットインターフェース** - Claude APIを使用したテキストベースの対話
+- **音声入力** - マイクからの音声をリアルタイムでテキスト変換
+- **音声出力** - Claudeの応答を自然な音声で読み上げ
+- **JARVIS風UI** - ホログラフィック、ネオングロー、アニメーション
+- **MCP統合** - MCPサーバーの簡単な設定・管理
+- **マルチモーダル** - 画像・ファイルのアップロード対応
 
-- Node.js 16.x 以上
-- npm 7.x 以上
+## Tech Stack
 
-## インストール
+- **Electron** - クロスプラットフォームデスクトップアプリ
+- **Vue 3** - モダンなリアクティブUI
+- **TypeScript** - 型安全な開発
+- **Vite** - 高速なビルドツール
+- **TailwindCSS** - ユーティリティファーストCSS
+- **Pinia** - Vue 3用状態管理
+- **SQLite** - ローカルデータベース
 
-```bash
-# リポジトリのクローン
-git clone <repository-url>
-cd sosiki
+## Getting Started
 
-# 依存パッケージのインストール
-npm install
-```
+### Prerequisites
 
-## 使い方
+- Node.js 18+
+- pnpm (recommended) or npm
 
-### アプリケーションの起動
-
-```bash
-npm start
-```
-
-### 基本的な操作フロー
-
-1. **社員管理**
-   - 左サイドバーから「社員管理」を選択
-   - 「社員を追加」ボタンをクリック
-   - 必要な情報を入力して保存
-
-2. **組織管理**
-   - 左サイドバーから「組織管理」を選択
-   - 「組織を追加」ボタンをクリック
-   - 組織情報を入力して保存
-
-3. **組織図の表示**
-   - 左サイドバーから「組織図表示」を選択
-   - 階層構造が自動的に表示されます
-   - ズーム操作が可能
-
-4. **HTML出力**
-   - 組織図表示画面で「HTML出力」ボタンをクリック
-   - 保存先を選択してHTMLファイルを生成
-
-5. **データの保存・読み込み**
-   - トップバーの「保存」ボタンでJSON形式で保存
-   - 「開く」ボタンで保存したファイルを読み込み
-
-## プロジェクト構成
-
-```
-sosiki/
-├── main.js              # Electronメインプロセス
-├── package.json         # プロジェクト設定
-├── REQUIREMENTS.md      # 要件定義書
-├── USER_MANUAL.md       # ユーザーマニュアル
-├── README.md            # このファイル
-└── src/
-    ├── index.html       # メインUI
-    ├── styles.css       # スタイルシート
-    └── renderer.js      # レンダラープロセス
-```
-
-## 開発
-
-### 開発モードで起動
+### Installation
 
 ```bash
-npm start
+# Install dependencies
+pnpm install
+
+# Run in development mode
+pnpm dev
+
+# Build for production
+pnpm build
 ```
 
-### パッケージング（実行可能ファイルの作成）
+### Configuration
 
-```bash
-npm run package
+1. アプリを起動
+2. 設定画面からClaude APIキーを入力
+3. 必要に応じてMCPサーバーを設定
+
+## Project Structure
+
+```
+claudis/
+├── electron/           # Electron main process
+│   ├── main/          # Main process entry
+│   └── preload/       # Preload scripts
+├── src/               # Vue app source
+│   ├── components/    # Vue components
+│   ├── stores/        # Pinia stores
+│   ├── types/         # TypeScript types
+│   └── lib/           # Utilities
+├── index.html         # HTML entry point
+└── package.json
 ```
 
-ビルドされたファイルは `dist/` ディレクトリに出力されます。
+## Screenshots
 
-## 詳細なマニュアル
+Coming soon...
 
-詳しい使い方は [USER_MANUAL.md](USER_MANUAL.md) を参照してください。
-
-## ライセンス
+## License
 
 MIT License
 
-## 作成者
+## Acknowledgments
 
-組織図作成アプリケーション開発チーム
+- Inspired by Iron Man's JARVIS/FRIDAY
+- Built with [Claude](https://anthropic.com) API
+- Uses [Model Context Protocol](https://modelcontextprotocol.io/)
